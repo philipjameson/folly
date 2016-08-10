@@ -29,6 +29,11 @@
 #define MEMBARRIER_CMD_SHARED 1
 #endif
 
+#if defined(__NR_membarrier) && !defined(MEMBARRIER_CMD_SHARED) && \
+    defined(__linux__)
+#include <linux/membarrier.h>
+#endif
+
 namespace folly {
 namespace detail {
 
